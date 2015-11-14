@@ -1,0 +1,8 @@
+#!/bin/bash
+
+SRC_DIR="assets"
+TGT_DIR="/var/www/assets"
+
+rm -r $TGT_DIR/*
+cp -r $SRC_DIR/* $TGT_DIR
+
