@@ -1,4 +1,5 @@
 from flask import Flask
+from user_agents import parse
 from werkzeug import serving
 from werkzeug._internal import _log
 
@@ -6,9 +7,17 @@ from werkzeug._internal import _log
 class LimitLogHandler(serving.WSGIRequestHandler):
     def log(self, type, message, *args):
         host_header = self.headers.getheader('X-Forwarded-For', 'unknown')
-        ua_header = self.headers.getheader('User-Agent', 'user-agent unknown')
+        ua_header = user_agent_from(self.headers.getheader('User-Agent', 'user-agent unknown'))
         msg = message % args
         _log(type, '%s [%s - %s]\n' % (msg, host_header, ua_header))
+
+
+def user_agent_from(user_agent_header):
+    parsed = parse(user_agent_header)
+    os = parsed.os.family
+    device = parsed.device.family
+    browser = parsed.browser.family
+    return "%s, %s, %s" % (os, device, browser)
 
 
 app = Flask(__name__)
