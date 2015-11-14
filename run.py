@@ -5,8 +5,9 @@ from werkzeug._internal import _log
 
 class LimitLogHandler(serving.WSGIRequestHandler):
     def log(self, type, message, *args):
+        host_header = self.headers.getheader('X-Forwarded-For', 'unknown')
         msg = message % args
-        _log(type, '%s [%s]\n' % (msg, self.client_address[0]))
+        _log(type, '%s [%s]\n' % (msg, host_header))
 
 
 app = Flask(__name__)
