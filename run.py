@@ -1,6 +1,3 @@
-from logging import FileHandler
-from logging import INFO
-
 from flask import Flask
 
 app = Flask(__name__)
@@ -14,7 +11,8 @@ def hello():
 
 
 if __name__ == "__main__":
-    file_handler = FileHandler('/var/log/msm-site.log')
-    file_handler.setLevel(INFO)
-    app.logger.addHandler(file_handler)
+    import logging
+
+    logging.basicConfig(filename='/var/log/msm-site.log', level=logging.DEBUG)
+
     app.run()
