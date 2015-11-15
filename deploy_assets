@@ -1,8 +1,11 @@
 #!/bin/bash
 
-SRC_DIR="assets"
-TGT_DIR="/var/www/assets"
+function clean_copy () {
+  rm -r $2/*
+  cp -r $1/* $2
+}
 
-rm -r $TGT_DIR/*
-cp -r $SRC_DIR/* $TGT_DIR
+clean_copy "assets" "/var/www/assets"
+clean_copy "favicons" "/var/www/favicons"
+
 
