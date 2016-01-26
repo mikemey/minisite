@@ -33,9 +33,6 @@ def hello():
 if __name__ == "__main__":
     import logging
 
-    # logging.basicConfig(filename='msm-site.log', level=logging.DEBUG,
-    #                     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-    logging.basicConfig(filename='/var/log/msm-site.log', level=logging.DEBUG,
-                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 app.run(request_handler=LimitLogHandler)
