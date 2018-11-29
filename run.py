@@ -35,4 +35,5 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-app.run(request_handler=LimitLogHandler)
+app.logger.info('server start...')
+app.run(request_handler=LimitLogHandler, host='127.0.0.1')
