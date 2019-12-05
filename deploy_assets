@@ -7,5 +7,3 @@ function clean_copy () {
 
 clean_copy "assets" "/var/www/assets"
 clean_copy "favicons" "/var/www/favicons"
-
-
