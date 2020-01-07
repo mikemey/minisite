@@ -39,5 +39,6 @@ def user_agent_from(user_agent_header):
     return "%s, %s, %s" % (os, device, browser)
 
 
-logger.info('server start...')
-app.run(host='127.0.0.1', port=5000)
+server_port = 5000
+logger.info('server start on port: {}'.format(server_port))
+app.run(host='127.0.0.1', port=server_port)
