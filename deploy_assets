@@ -5,5 +5,6 @@ function clean_copy () {
   cp -r $1/* $2
 }
 
-clean_copy "assets" "/var/www/assets"
-clean_copy "favicons" "/var/www/favicons"
+APACHE_DIR="/var/www/html"
+clean_copy "assets" "$APACHE_DIR/assets"
+clean_copy "favicons" "$APACHE_DIR/favicons"
