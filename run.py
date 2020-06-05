@@ -1,8 +1,10 @@
+import logging
+import sys
+
 from flask import Flask, request
 from user_agents import parse
-import logging
 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(message)s', stream=sys.stdout)
 logger = logging.getLogger("main")
 
 log = logging.getLogger('werkzeug')
