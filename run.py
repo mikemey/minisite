@@ -11,6 +11,12 @@ log = logging.getLogger('werkzeug')
 log.disabled = True
 
 app = Flask(__name__)
+
+# DEBUG ONLY
+# app = Flask(__name__,
+#             static_url_path='',
+#             static_folder='')
+
 index = open("index.html").read()
 
 
